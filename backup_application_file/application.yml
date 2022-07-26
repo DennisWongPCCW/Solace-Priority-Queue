@@ -1,0 +1,23 @@
+server:
+  servlet:
+    context-path: /demo
+  port: '8000'
+solace:
+  jms:
+    host: tcps://mr1jmmxzdd8dk.messaging.solace.cloud:55443
+    client-username: solace-cloud-client
+    client-password: 17ct0jq7s5vg0777m6culnri7g
+    msg-vpn: testing-solace
+spring:
+  main:
+    allow-bean-definition-overriding: 'true'
+  datasource:
+    driver:
+      class: oracle.jdbc.driver.OracleDriver
+    password: 'Pass1234'
+    username: 'SYSTEM'
+    url: jdbc:oracle:thin:@localhost:1521/xe
+mybatis:
+  config-locations: classpath:mybatis-config.xml
+  mapper-locations: classpath:**/*.xml
+

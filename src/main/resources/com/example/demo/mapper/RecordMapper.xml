@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.RecordMapper">
+    <insert id="insertSentRequest">
+        INSERT INTO
+            sent_requests (
+                id,
+                payload,
+                status,
+                created_By,
+                created_Date,
+                updated_By,
+                remark
+            ) VALUES (
+                #{id, jdbcType=VARCHAR},
+                #{payload, jdbcType=VARCHAR},
+                #{status, jdbcType=VARCHAR},
+                #{createdBy, jdbcType=VARCHAR},
+                now(),
+                #{createdBy, jdbcType=VARCHAR},
+                #{remark, jdbcType=VARCHAR}
+            )
+    </insert>
+    <select id="getSentRequest" resultType="com.example.demo.entity.SentRequest">
+        SELECT
+            id,
+            payload,
+            status,
+            created_By,
+            created_date,
+            updated_By,
+            updated_Date,
+            remark
+        FROM sent_requests
+    </select>
+    <update id="updateSentRequest">
+        UPDATE
+            sent_requests
+        SET
+            status = #{status, jdbcType=VARCHAR}
+        WHERE
+            id = #{id, jdbcType=VARCHAR}
+    </update>
+</mapper>
